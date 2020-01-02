@@ -26,20 +26,25 @@ public class Day2 extends Day {
             // Read all contents of the file.
             int[] numbers = Arrays.stream(rd.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
             int index = 0;
-            int number = numbers[index];
 
-            while ((index < numbers.length - 3) && (number != FINISHED)) {
-                if (number == ADD) {
-                    numbers[index + 3] = numbers[index + 1] + numbers[index + 2];
-                } else if (number == MULTIPLY) {
-                    numbers[index + 3] = numbers[index + 1] * numbers[index + 2];
+            while ((index < numbers.length - 3) && (numbers[index] != FINISHED)) {
+                if (numbers[index] == ADD) {
+                    int pos1 = numbers[index + 1];
+                    int pos2 = numbers[index + 2];
+                    int dest = numbers[index + 3];
+                    numbers[dest] = numbers[pos1] + numbers[pos2];
+                } else if (numbers[index] == MULTIPLY) {
+                    int pos1 = numbers[index + 1];
+                    int pos2 = numbers[index + 2];
+                    int dest = numbers[index + 3];
+                    numbers[dest] = numbers[pos1] * numbers[pos2];
                 } else {
                     System.err.println("Error!");
                 }
                 index += 4;
             }
 
-            System.out.println("Result: " + Arrays.toString(numbers));
+            System.out.println("Result: " + Arrays.toString(numbers).replace(", ", ","));
         } catch (IOException ex) {
             System.err.println("An IOException was caught!");
             ex.printStackTrace();
