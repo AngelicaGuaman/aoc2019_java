@@ -1,18 +1,18 @@
+package org.aoc2019.day;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Day1 extends Day{
+public class Day1 extends Day {
 
     public Day1(String fileName) {
         super(fileName);
     }
 
-    public void readFileAndReturnTotalFuel() {
+    public void returnTotalFuel() {
         BufferedReader rd = null;
-        Long totalFuelPart1 = 0L;
-        Long totalFuelPart2 = 0L;
 
         try {
             // Open the file for reading.
@@ -20,6 +20,8 @@ public class Day1 extends Day{
 
             // Read all contents of the file.
             String inputLine = null;
+            Long totalFuelPart1 = 0L, totalFuelPart2 = 0L;
+
             while ((inputLine = rd.readLine()) != null) {
                 Long mass = Long.parseLong(inputLine);
                 totalFuelPart1 += calculateFuel(mass);
