@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Day2 extends Day {
 
@@ -26,16 +24,22 @@ public class Day2 extends Day {
             rd = new BufferedReader(new FileReader(new File(getFileName())));
 
             // Read all contents of the file.
-            String[] inputIntegers = rd.readLine().split(",");
-            List<Integer> integersList = Arrays.stream(inputIntegers).map(Integer::new).collect(Collectors.toList());
+            int[] numbers = Arrays.stream(rd.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
+            int index = 0;
+            int number = numbers[index];
 
-            for(Integer integer: integersList){
-                if ( integer == ADD) {
-
-                }else if(integer == MULTIPLY ){
-
+            while ((index < numbers.length - 3) && (number != FINISHED)) {
+                if (number == ADD) {
+                    numbers[index + 3] = numbers[index + 1] + numbers[index + 2];
+                } else if (number == MULTIPLY) {
+                    numbers[index + 3] = numbers[index + 1] * numbers[index + 2];
+                } else {
+                    System.err.println("Error!");
                 }
+                index += 4;
             }
+
+            System.out.println("Result: " + Arrays.toString(numbers));
         } catch (IOException ex) {
             System.err.println("An IOException was caught!");
             ex.printStackTrace();
