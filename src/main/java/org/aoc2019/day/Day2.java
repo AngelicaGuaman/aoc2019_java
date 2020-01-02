@@ -16,7 +16,7 @@ public class Day2 extends Day {
         super(fileName);
     }
 
-    public void returnTotalFuel() {
+    public void returnPositionZero() {
         BufferedReader rd = null;
 
         try {
@@ -26,6 +26,8 @@ public class Day2 extends Day {
             // Read all contents of the file.
             int[] numbers = Arrays.stream(rd.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
             int index = 0;
+            numbers[1] = 12;
+            numbers[2]= 2;
 
             while ((index < numbers.length - 3) && (numbers[index] != FINISHED)) {
                 if (numbers[index] == ADD) {
@@ -43,7 +45,6 @@ public class Day2 extends Day {
                 }
                 index += 4;
             }
-
             System.out.println("Result: " + Arrays.toString(numbers).replace(", ", ","));
         } catch (IOException ex) {
             System.err.println("An IOException was caught!");

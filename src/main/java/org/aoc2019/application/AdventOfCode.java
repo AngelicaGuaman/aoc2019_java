@@ -10,6 +10,6 @@ public class AdventOfCode {
         day1.returnTotalFuel();
 
         Day2 day2 = new Day2("src/main/resources/day2.txt");
-        day2.returnTotalFuel();
+        day2.returnPositionZero();
     }
 }
