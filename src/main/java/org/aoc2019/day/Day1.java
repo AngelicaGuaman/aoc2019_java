@@ -1,40 +1,24 @@
 package org.aoc2019.day;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.List;
 
 public class Day1 extends Day {
 
-    public Day1(String fileName) {
-        super(fileName);
+    public Day1(List<String> inputs) {
+        super(inputs);
     }
 
     public void returnTotalFuel() {
-        BufferedReader rd = null;
+        Long totalFuelPart1 = 0L, totalFuelPart2 = 0L;
 
-        try {
-            // Open the file for reading.
-            rd = new BufferedReader(new FileReader(new File(getFileName())));
-
-            // Read all contents of the file.
-            String inputLine = null;
-            Long totalFuelPart1 = 0L, totalFuelPart2 = 0L;
-
-            while ((inputLine = rd.readLine()) != null) {
-                Long mass = Long.parseLong(inputLine);
-                totalFuelPart1 += calculateFuel(mass);
-                totalFuelPart2 += calculateNotNegativeFuel(mass);
-            }
-
-            System.out.println("total Fuel part1 : " + totalFuelPart1);
-            System.out.println("total Fuel part2 : " + totalFuelPart2);
-
-        } catch (IOException ex) {
-            System.err.println("An IOException was caught!");
-            ex.printStackTrace();
+        for (String input : getInputs()) {
+            Long mass = Long.parseLong(input);
+            totalFuelPart1 += calculateFuel(mass);
+            totalFuelPart2 += calculateNotNegativeFuel(mass);
         }
+
+        System.out.println("total Fuel part1 : " + totalFuelPart1);
+        System.out.println("total Fuel part2 : " + totalFuelPart2);
     }
 
     private Long calculateFuel(Long mass) {

@@ -1,13 +1,15 @@
 package org.aoc2019.day;
 
-public class Day {
-    private String fileName;
+import java.util.List;
 
-    public Day(String fileName) {
-        this.fileName = fileName;
+public class Day {
+    private List<String> inputs;
+
+    public Day(List<String> inputs) {
+        this.inputs = inputs;
     }
 
-    public String getFileName() {
-        return fileName;
+    public List<String> getInputs() {
+        return inputs;
     }
 }
