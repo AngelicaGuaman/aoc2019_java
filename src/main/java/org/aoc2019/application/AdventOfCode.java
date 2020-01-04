@@ -22,7 +22,8 @@ public class AdventOfCode {
         nounAndVerb[1] = 2;
         day2.calculatePositionZero(nounAndVerb[0], nounAndVerb[1]);
         nounAndVerb = day2.calculateNounAndVerb();
-        day2.calculatePositionZero(nounAndVerb[0], nounAndVerb[1]);
-
+        if(nounAndVerb[0] != -1 && nounAndVerb[1] != -1){
+            day2.calculatePositionZero(nounAndVerb[0], nounAndVerb[1]);
+        }
     }
 }
