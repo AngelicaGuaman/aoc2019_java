@@ -17,8 +17,12 @@ public class AdventOfCode {
         file = new File("src/main/resources/day2.txt");
         lines = file.readFile();
         Day2 day2 = new Day2(lines);
-        day2.returnPositionZero();
-        day2.part2();
+        int[] nounAndVerb = new int[2];
+        nounAndVerb[0] = 12;
+        nounAndVerb[1] = 2;
+        day2.calculatePositionZero(nounAndVerb[0], nounAndVerb[1]);
+        nounAndVerb = day2.calculateNounAndVerb();
+        day2.calculatePositionZero(nounAndVerb[0], nounAndVerb[1]);
 
     }
 }

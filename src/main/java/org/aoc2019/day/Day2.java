@@ -15,11 +15,7 @@ public class Day2 extends Day {
         super(inputs);
     }
 
-    public void part2() {
-        System.out.println(Arrays.toString(getValuesForGetCheckValueConstant()));
-    }
-
-    private int[] getValuesForGetCheckValueConstant() {
+    public int[] calculateNounAndVerb() {
         int[] result = new int[2];
         result[0] = -1;
         result[1] = -1;
@@ -39,11 +35,11 @@ public class Day2 extends Day {
         return result;
     }
 
-    public void returnPositionZero() {
+    public void calculatePositionZero(int noun, int verb) {
         int[] numbers = Arrays.stream(getInputs().get(0).split(",")).mapToInt(Integer::parseInt).toArray();
         int index = 0;
-        numbers[1] = 12;
-        numbers[2] = 2;
+        numbers[1] = noun;
+        numbers[2] = verb;
 
         while ((index < numbers.length - 3) && (numbers[index] != FINISHED)) {
             if (numbers[index] == ADD) {

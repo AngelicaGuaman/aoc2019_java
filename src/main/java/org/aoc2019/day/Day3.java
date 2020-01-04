@@ -1,4 +1,9 @@
 package org.aoc2019.day;
 
-public class Day3 {
+import java.util.List;
+
+public class Day3 extends Day {
+    public Day3(List<String> inputs) {
+        super(inputs);
+    }
 }
