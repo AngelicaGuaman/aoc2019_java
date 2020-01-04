@@ -19,12 +19,8 @@ public class AdventOfCode {
         file = new File("src/main/resources/day2.txt");
         lines = file.readFile();
         Day2 day2 = new Day2(lines);
-        int[] nounAndVerb = new int[2];
-        nounAndVerb[0] = 12;
-        nounAndVerb[1] = 2;
-        int result = day2.calculatePositionZero(nounAndVerb[0], nounAndVerb[1]);
+        int result = day2.calculatePositionZero(12, 2);
         System.out.println("Result: " + result);
-
         result = day2.calculateNounAndVerb();
         System.out.println("Result: " + result);
 

@@ -16,13 +16,12 @@ public class Day2 extends Day {
     }
 
     public int calculateNounAndVerb() {
-        int result = -1;
         int[] nounAndVerb = new int[2];
         boolean found = false;
 
         for (int i = 0; !found && i < MAX_VALUE; i++) {
             for (int j = 0; !found && j < MAX_VALUE; j++) {
-                result = this.calculatePositionZero(i, j);
+                int result = this.calculatePositionZero(i, j);
                 if (result == CHECK_VALUE) {
                     nounAndVerb[0] = i;
                     nounAndVerb[1] = j;
