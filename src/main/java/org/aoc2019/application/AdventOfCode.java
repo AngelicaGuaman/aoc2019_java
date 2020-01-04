@@ -2,8 +2,10 @@ package org.aoc2019.application;
 
 import org.aoc2019.day.Day1;
 import org.aoc2019.day.Day2;
+import org.aoc2019.day.Day3;
 import org.aoc2019.utils.File;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class AdventOfCode {
@@ -20,10 +22,15 @@ public class AdventOfCode {
         int[] nounAndVerb = new int[2];
         nounAndVerb[0] = 12;
         nounAndVerb[1] = 2;
-        day2.calculatePositionZero(nounAndVerb[0], nounAndVerb[1]);
-        nounAndVerb = day2.calculateNounAndVerb();
-        if(nounAndVerb[0] != -1 && nounAndVerb[1] != -1){
-            day2.calculatePositionZero(nounAndVerb[0], nounAndVerb[1]);
-        }
+        int result = day2.calculatePositionZero(nounAndVerb[0], nounAndVerb[1]);
+        System.out.println("Result: " + result);
+
+        result = day2.calculateNounAndVerb();
+        System.out.println("Result: " + result);
+
+        file = new File("src/main/resources/day3.txt");
+        lines = file.readFile();
+        Day3 day3 = new Day3(lines);
+
     }
 }

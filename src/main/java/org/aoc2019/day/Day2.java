@@ -15,27 +15,25 @@ public class Day2 extends Day {
         super(inputs);
     }
 
-    public int[] calculateNounAndVerb() {
-        int[] result = new int[2];
-        result[0] = -1;
-        result[1] = -1;
-
+    public int calculateNounAndVerb() {
+        int result = -1;
+        int[] nounAndVerb = new int[2];
         boolean found = false;
 
         for (int i = 0; !found && i < MAX_VALUE; i++) {
             for (int j = 0; !found && j < MAX_VALUE; j++) {
-                int product = (MAX_VALUE * i + j);
-                if (product == CHECK_VALUE) {
-                    result[0] = i;
-                    result[1] = j;
+                result = this.calculatePositionZero(i, j);
+                if (result == CHECK_VALUE) {
+                    nounAndVerb[0] = i;
+                    nounAndVerb[1] = j;
                     found = true;
                 }
             }
         }
-        return result;
+        return 100 * nounAndVerb[0] + nounAndVerb[1];
     }
 
-    public void calculatePositionZero(int noun, int verb) {
+    public int calculatePositionZero(int noun, int verb) {
         int[] numbers = Arrays.stream(getInputs().get(0).split(",")).mapToInt(Integer::parseInt).toArray();
         int index = 0;
         numbers[1] = noun;
@@ -57,6 +55,6 @@ public class Day2 extends Day {
             }
             index += 4;
         }
-        System.out.println("Result: " + Arrays.toString(numbers).replace(", ", ","));
+        return numbers[0];
     }
 }
