@@ -18,7 +18,7 @@ public class AdventOfCode {
         lines = file.readFile();
         Day2 day2 = new Day2(lines);
         day2.returnPositionZero();
-
+        day2.part2();
 
     }
 }

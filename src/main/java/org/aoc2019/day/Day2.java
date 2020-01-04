@@ -5,12 +5,38 @@ import java.util.List;
 
 public class Day2 extends Day {
 
-    private static final Integer FINISHED = 99;
-    private static final Integer ADD = 1;
-    private static final Integer MULTIPLY = 2;
+    private static final int FINISHED = 99;
+    private static final int ADD = 1;
+    private static final int MULTIPLY = 2;
+    private static final int CHECK_VALUE = 19690720;
+    private static final int MAX_VALUE = 100;
 
     public Day2(List<String> inputs) {
         super(inputs);
+    }
+
+    public void part2() {
+        System.out.println(Arrays.toString(getValuesForGetCheckValueConstant()));
+    }
+
+    private int[] getValuesForGetCheckValueConstant() {
+        int[] result = new int[2];
+        result[0] = -1;
+        result[1] = -1;
+
+        boolean found = false;
+
+        for (int i = 0; !found && i < MAX_VALUE; i++) {
+            for (int j = 0; !found && j < MAX_VALUE; j++) {
+                int product = (MAX_VALUE * i + j);
+                if (product == CHECK_VALUE) {
+                    result[0] = i;
+                    result[1] = j;
+                    found = true;
+                }
+            }
+        }
+        return result;
     }
 
     public void returnPositionZero() {
