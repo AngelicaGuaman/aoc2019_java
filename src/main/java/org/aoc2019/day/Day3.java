@@ -8,11 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Day3 {
-    HashMap<Direction, List<Coordinate>> tableau;
-    private Direction direction;
 
     public Day3() {
-        tableau = new HashMap<>();
     }
 
     public HashMap<Direction, List<Coordinate>> groupCoordinatesByDirection(String line) {
@@ -24,65 +21,33 @@ public class Day3 {
             String word = words[i];
             char direction = word.charAt(0);
             int positions = Integer.parseInt(word.substring(1));
-            List<Coordinate> coordinates = new ArrayList<>();
 
             if (direction == 'R') {
-                if (tableau.containsKey(Direction.RIGHT)) {
-                    coordinates = tableau.get(Direction.RIGHT);
-                }
-                for (int position = 1; position <= positions; position++) {
-                    Coordinate coordinate = new Coordinate(r, position);
-                    coordinates.add(coordinate);
-                }
-                tableau.put(Direction.RIGHT, coordinates);
+                fillCoordinates(tableau, Direction.RIGHT, r, positions);
                 r++;
             } else if (direction == 'L') {
-                coordinates = new ArrayList<>();
-                if (tableau.containsKey(Direction.LEFT)) {
-                    coordinates = tableau.get(Direction.LEFT);
-                }
-                for (int position = 1; position <= positions; position++) {
-                    Coordinate coordinate = new Coordinate(l, position);
-                    coordinates.add(coordinate);
-                }
-                tableau.put(Direction.LEFT, coordinates);
+                fillCoordinates(tableau, Direction.LEFT, l, positions);
                 l--;
             } else if (direction == 'U') {
-                coordinates = new ArrayList<>();
-                if (tableau.containsKey(Direction.UP)) {
-                    coordinates = tableau.get(Direction.UP);
-                }
-                for (int position = 1; position <= positions; position++) {
-                    Coordinate coordinate = new Coordinate(position, u);
-                    coordinates.add(coordinate);
-                }
-                tableau.put(Direction.UP, coordinates);
+                fillCoordinates(tableau, Direction.UP, positions, u);
                 u++;
             } else {
-                coordinates = new ArrayList<>();
-                if (tableau.containsKey(Direction.DOWN)) {
-                    coordinates = tableau.get(Direction.DOWN);
-                }
-                for (int position = 1; position <= positions; position++) {
-                    Coordinate coordinate = new Coordinate(position, d);
-                    coordinates.add(coordinate);
-                }
-                tableau.put(Direction.DOWN, coordinates);
+                fillCoordinates(tableau, Direction.DOWN, positions, d);
                 d--;
             }
         }
         return tableau;
     }
 
-    private void fillCoordinates(HashMap<Direction, List<Coordinate>> tableau, int x, int y) {
+    private void fillCoordinates(HashMap<Direction, List<Coordinate>> tableau, Direction direction, int x, int y) {
         List<Coordinate> coordinates = new ArrayList<>();
-        if (tableau.containsKey(Direction.RIGHT)) {
-            coordinates = tableau.get(Direction.RIGHT);
+        if (tableau.containsKey(direction)) {
+            coordinates = tableau.get(direction);
         }
         for (int position = 1; position <= y; position++) {
             Coordinate coordinate = new Coordinate(x, position);
             coordinates.add(coordinate);
         }
-        tableau.put(Direction.RIGHT, coordinates);
+        tableau.put(direction, coordinates);
     }
 }
