@@ -3,6 +3,7 @@ package org.aoc2019.application;
 import org.aoc2019.day.Day1;
 import org.aoc2019.day.Day2;
 import org.aoc2019.day.Day3;
+import org.aoc2019.day.Day4;
 import org.aoc2019.utils.File;
 
 import java.awt.*;
@@ -44,5 +45,13 @@ public class AdventOfCode {
         if (distance.isPresent()) {
             System.out.println("Steps: " + numSteps.get());
         }
+
+        Day4 day4 = new Day4();
+        int passwords = day4.getPasswordPart1();
+        System.out.println("Number of passwords - Part 1: " + passwords);
+
+        passwords = day4.getPasswordPart2();
+        System.out.println("Number of passwords - Part 2: " + passwords);
+
     }
 }
