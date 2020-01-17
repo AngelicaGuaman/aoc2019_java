@@ -3,10 +3,33 @@ package org.aoc2019.day;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class Day3 {
+import static java.util.stream.Collectors.toList;
 
-    public List<Point> getPointList(String line) {
+public class Day3 extends Day {
+    private static List<Point> line1 = new ArrayList<>();
+    private static List<Point> line2 = new ArrayList<>();
+    private static List<Point> pointsIntersection = new ArrayList<>();
+
+    public Day3(List<String> lines) {
+        super(lines);
+    }
+
+    public Optional<Integer> calculateDistanceBetweenWires() {
+        line1 = this.getPointList(getInputs().get(0));
+        line2 = this.getPointList(getInputs().get(1));
+
+        pointsIntersection = line1.stream().filter(line2::contains).collect(toList());
+        Optional<Integer> distance = pointsIntersection.stream().filter(point -> !point.equals(new Point(0, 0))).map(point -> Math.abs(point.x) + Math.abs(point.y)).min(Integer::compare);
+        return distance;
+    }
+
+    public Optional<Integer> calculateNumOfSteps(){
+        Optional<Integer> numSteps = pointsIntersection.stream().filter(point -> !point.equals(new Point(0, 0))).map(point -> line1.indexOf(point) + line2.indexOf(point)).min(Integer::compare);
+        return numSteps;
+    }
+    private List<Point> getPointList(String line) {
         String[] words = line.split(",");
         List<Point> points = new ArrayList<>();
         Point point = new Point(0, 0);

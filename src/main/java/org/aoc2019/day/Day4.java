@@ -8,7 +8,7 @@ public class Day4 {
         int numberOfPasswords = 0;
         for (int password = START; password <= END; password++) {
             char[] passwords = String.valueOf(password).toCharArray();
-            if(isAdjacent(passwords) && neverDecrease(passwords)){
+            if (isAdjacent(passwords) && neverDecrease(passwords)) {
                 numberOfPasswords++;
             }
         }
@@ -19,7 +19,7 @@ public class Day4 {
         int numberOfPasswords = 0;
         for (int password = START; password <= END; password++) {
             char[] passwords = String.valueOf(password).toCharArray();
-            if(containsOnlyTwoAdjacent(passwords) && neverDecrease(passwords)){
+            if (containsOnlyTwoAdjacent(passwords) && neverDecrease(passwords)) {
                 numberOfPasswords++;
             }
         }
@@ -30,13 +30,13 @@ public class Day4 {
         for (int i = 0; i < password.length - 1; i++) {
             if (password[i] == password[i + 1]) {
                 boolean matchBefore = false, matchAfter = false;
-                if(i - 1 >= 0 && password[i] == password[i -1]){
+                if (i - 1 >= 0 && password[i] == password[i - 1]) {
                     matchBefore = true;
                 }
-                if(i + 2 < password.length && password[i] == password[i + 2]){
+                if (i + 2 < password.length && password[i] == password[i + 2]) {
                     matchAfter = true;
                 }
-                if(!matchAfter && !matchBefore){
+                if (!matchAfter && !matchBefore) {
                     return true;
                 }
             }
@@ -53,9 +53,9 @@ public class Day4 {
         return false;
     }
 
-    private boolean neverDecrease(char[] passwords){
-        for(int i = 0; i < passwords.length - 1; i++){
-            if(passwords[i] > passwords[i+1]){
+    private boolean neverDecrease(char[] passwords) {
+        for (int i = 0; i < passwords.length - 1; i++) {
+            if (passwords[i] > passwords[i + 1]) {
                 return false;
             }
         }
