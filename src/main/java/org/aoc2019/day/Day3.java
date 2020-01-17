@@ -1,32 +1,12 @@
 package org.aoc2019.day;
 
-import org.aoc2019.utils.File;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import static java.util.stream.Collectors.toList;
 
 public class Day3 {
 
-    public static void main(String[] args) {
-        File file = new File("src/main/resources/day3.txt");
-        List<String> lines = file.readFile();
-        Day3 day3 = new Day3();
-        List<Point> tableauLine1 = day3.groupCoordinatesByDirection(lines.get(0));
-        List<Point> tableauLine2 = day3.groupCoordinatesByDirection(lines.get(1));
-
-        List<Point> pointsIntersection = tableauLine1.stream().filter(tableauLine2::contains).collect(toList());
-        Optional<Integer> distance = pointsIntersection.stream().filter(point -> !point.equals(new Point(0, 0))).map(point -> Math.abs(point.x) + Math.abs(point.y)).min(Integer::compare);
-
-        if(distance.isPresent()) {
-            System.out.println("Distance: " + distance.get());
-        }
-    }
-
-    private List<Point> groupCoordinatesByDirection(String line) {
+    public List<Point> getPointList(String line) {
         String[] words = line.split(",");
         List<Point> points = new ArrayList<>();
         Point point = new Point(0, 0);
