@@ -1,9 +1,6 @@
 package org.aoc2019.application;
 
-import org.aoc2019.day.Day1;
-import org.aoc2019.day.Day2;
-import org.aoc2019.day.Day3;
-import org.aoc2019.day.Day4;
+import org.aoc2019.day.*;
 import org.aoc2019.utils.File;
 
 import java.util.List;
@@ -45,6 +42,10 @@ public class AdventOfCode {
         passwords = day4.getPasswordPart2();
         System.out.println("Number of passwords - Part 2: " + passwords);
 
-
+        file = new File("src/main/resources/day5.txt");
+        lines = file.readFile();
+        Day5 day5 = new Day5(lines);
+        result = day5.calculate();
+        System.out.println("Result Day 5 Part 1: " + result);
     }
 }

@@ -1,5 +1,7 @@
 package org.aoc2019.day;
 
+import org.aoc2019.utils.Intcode;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,7 +11,11 @@ public class Day5 extends Day {
         super(inputs);
     }
 
-    public void calculate() {
-        Arrays.stream(getInputs().get(0).split(","));
+    public int calculate() {
+        int[] numbers = Arrays.stream(getInputs().get(0).split(","))
+                .mapToInt(Integer::parseInt).toArray();
+
+        Intcode intcode = new Intcode();
+        return intcode.calculate(numbers);
     }
 }
