@@ -1,18 +1,16 @@
 package org.aoc2019.day;
 
+import org.aoc2019.utils.Intcode;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class Day2 extends Day {
-
-    private static final int FINISHED = 99;
-    private static final int ADD = 1;
-    private static final int MULTIPLY = 2;
     private static final int CHECK_VALUE = 19690720;
     private static final int MAX_VALUE = 100;
 
-    public Day2(List<String> inputs) {
-        super(inputs);
+    public Day2(List<String> lines) {
+        super(lines);
     }
 
     public int calculateNounAndVerb() {
@@ -34,26 +32,11 @@ public class Day2 extends Day {
 
     public int calculatePositionZero(int noun, int verb) {
         int[] numbers = Arrays.stream(getInputs().get(0).split(",")).mapToInt(Integer::parseInt).toArray();
-        int index = 0;
         numbers[1] = noun;
         numbers[2] = verb;
+        Intcode intcode = new Intcode();
 
-        while ((index < numbers.length - 3) && (numbers[index] != FINISHED)) {
-            if (numbers[index] == ADD) {
-                int pos1 = numbers[index + 1];
-                int pos2 = numbers[index + 2];
-                int dest = numbers[index + 3];
-                numbers[dest] = numbers[pos1] + numbers[pos2];
-            } else if (numbers[index] == MULTIPLY) {
-                int pos1 = numbers[index + 1];
-                int pos2 = numbers[index + 2];
-                int dest = numbers[index + 3];
-                numbers[dest] = numbers[pos1] * numbers[pos2];
-            } else {
-                System.err.println("Error!");
-            }
-            index += 4;
-        }
-        return numbers[0];
+        return intcode.calculate(numbers);
     }
+
 }

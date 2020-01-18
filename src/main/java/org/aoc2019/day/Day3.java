@@ -8,7 +8,7 @@ import java.util.Optional;
 import static java.util.stream.Collectors.toList;
 
 public class Day3 extends Day {
-    private static Point origin = new Point(0,0);
+    private static Point origin = new Point(0, 0);
     private static List<Point> line1 = new ArrayList<>();
     private static List<Point> line2 = new ArrayList<>();
     private static List<Point> pointsIntersection = new ArrayList<>();
