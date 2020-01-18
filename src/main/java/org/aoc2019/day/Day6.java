@@ -5,9 +5,9 @@ import org.aoc2019.utils.Intcode;
 import java.util.Arrays;
 import java.util.List;
 
-public class Day5 extends Day {
+public class Day6 extends Day {
 
-    public Day5(List<String> inputs) {
+    public Day6(List<String> inputs) {
         super(inputs);
     }
 
