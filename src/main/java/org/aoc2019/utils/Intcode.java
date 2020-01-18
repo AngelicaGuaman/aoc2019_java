@@ -8,7 +8,10 @@ public class Intcode {
     private static final int IN = 3;
     private static final int OUT = 4;
 
-    public Intcode() {
+    private int input;
+
+    public Intcode(int input) {
+        this.input = input;
     }
 
     public int calculate(int[] numbers) {
@@ -24,7 +27,6 @@ public class Intcode {
                 addOrMultiply(numbers, modes, index, '*');
                 index += 4;
             } else if (operation == IN) {
-                int input = 1;
                 int dest = numbers[index + 1];
                 numbers[dest] = input;
                 index += 2;
@@ -54,10 +56,9 @@ public class Intcode {
         int pos2 = numbers[index + 2];
         int dest = numbers[index + 3];
 
-        int number1 = getParameter(numbers, modes[0], pos1);
+        int number1 = getParameter(numbers, modes[2], pos1);
         int number2 = getParameter(numbers, modes[1], pos2);
         numbers[dest] = operation == '*' ? number1 * number2 : number1 + number2;
-
     }
 
     private int getParameter(int[] numbers, int mode, int indexOrNumber) {

@@ -34,7 +34,7 @@ public class Day2 extends Day {
         int[] numbers = Arrays.stream(getInputs().get(0).split(",")).mapToInt(Integer::parseInt).toArray();
         numbers[1] = noun;
         numbers[2] = verb;
-        Intcode intcode = new Intcode();
+        Intcode intcode = new Intcode(1);
 
         return intcode.calculate(numbers);
     }

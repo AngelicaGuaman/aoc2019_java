@@ -15,7 +15,7 @@ public class Day5 extends Day {
         int[] numbers = Arrays.stream(getInputs().get(0).split(","))
                 .mapToInt(Integer::parseInt).toArray();
 
-        Intcode intcode = new Intcode();
+        Intcode intcode = new Intcode(1);
         return intcode.calculate(numbers);
     }
 }
