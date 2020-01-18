@@ -6,7 +6,6 @@ import org.aoc2019.day.Day3;
 import org.aoc2019.day.Day4;
 import org.aoc2019.utils.File;
 
-import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +28,8 @@ public class AdventOfCode {
         file = new File("src/main/resources/day3.txt");
         lines = file.readFile();
         Day3 day3 = new Day3(lines);
-        Optional<Integer> distance = day3.calculateDistanceBetweenWires();
 
+        Optional<Integer> distance = day3.calculateDistanceBetweenWires();
         if (distance.isPresent()) {
             System.out.println("Distance: " + distance.get());
         }
@@ -43,9 +42,9 @@ public class AdventOfCode {
         Day4 day4 = new Day4();
         int passwords = day4.getPasswordPart1();
         System.out.println("Number of passwords - Part 1: " + passwords);
-
         passwords = day4.getPasswordPart2();
         System.out.println("Number of passwords - Part 2: " + passwords);
+
 
     }
 }
