@@ -1,7 +1,6 @@
 package org.aoc2019.application;
 
 import org.aoc2019.day.*;
-import org.aoc2019.utils.File;
 
 import java.io.IOException;
 import java.nio.file.Files;

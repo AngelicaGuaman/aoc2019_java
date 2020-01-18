@@ -14,7 +14,7 @@ public class Intcode {
     public int calculate(int[] numbers) {
         int index = 0;
         while ((index < numbers.length - 3) && (numbers[index] != FINISHED)) {
-            int number = numbers[index];
+            int number = changeToPositiveNumber(numbers[index]);
             int operation = number % 100;
             int[] modes = calculateModes(number);
             if (operation == ADD) {
@@ -24,9 +24,9 @@ public class Intcode {
                 addOrMultiply(numbers, modes, index, '*');
                 index += 4;
             } else if (operation == IN) {
-                int storedValue = 50;
+                int input = 1;
                 int dest = numbers[index + 1];
-                numbers[dest] = storedValue;
+                numbers[dest] = input;
                 index += 2;
             } else if (operation == OUT) {
                 int output = numbers[index + 1];
@@ -61,10 +61,10 @@ public class Intcode {
     }
 
     private int getParameter(int[] numbers, int mode, int indexOrNumber) {
-        if (mode == 0) {
-            return numbers[indexOrNumber];
-        }
+        return mode == 0 ? numbers[indexOrNumber] : indexOrNumber;
+    }
 
-        return indexOrNumber;
+    private int changeToPositiveNumber(int number){
+        return number < 0 ? 100 - number : number;
     }
 }
