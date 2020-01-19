@@ -16,7 +16,7 @@ public class Intcode {
 
     public int calculate(int[] numbers) {
         int index = 0;
-        while ((index < numbers.length - 3) && (numbers[index] != FINISHED)) {
+        while (numbers[index] != FINISHED) {
             int number = numbers[index];
             int operation = number % 100;
             int[] modes = calculateModes(number);
@@ -56,7 +56,7 @@ public class Intcode {
         int pos2 = numbers[index + 2];
         int dest = numbers[index + 3];
 
-        int number1 = getParameter(numbers, modes[2], pos1);
+        int number1 = getParameter(numbers, modes[0], pos1);
         int number2 = getParameter(numbers, modes[1], pos2);
         numbers[dest] = operation == '*' ? number1 * number2 : number1 + number2;
     }
